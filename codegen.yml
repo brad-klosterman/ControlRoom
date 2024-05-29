@@ -1,0 +1,33 @@
+schema:
+  - https://api.stage.seon-group.net
+  - src/apollo/subscriptions/schema.gql
+overwrite: true
+ignoreNoDocuments: true
+generates:
+  src/apollo/codegen/:
+    documents:
+      - src/apollo/operations/**/**.gql
+      - src/apollo/fragments/**/**.gql
+      - src/apollo/subscriptions/**/!(*.schema).gql
+      - src/app.state/**/**.gql
+      - src/apps/alarms/API/**/**.**
+      - src/apps/customers/API/**/**.**
+      - src/apps/admin/alarm_management/API/**/**.**
+      - src/apps/admin/billing_management/API/**/**.**
+      - src/apps/admin/company_settings/API/**/**.**
+      - src/apps/admin/reports_audits/API/**/**.**
+      - src/apps/admin/user_management/API/**/**.**
+    preset: client
+    presetConfig:
+      namingConvention: change-case#constantCase
+      fragmentMasking:
+        unmaskFunctionName: getFragment
+    config:
+      namingConvention: change-case#constantCase
+      enumsAsTypes: true
+      inputMaybeValue: T | null | undefined
+      maybeValue: T | null | undefined
+      skipTypename: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write
