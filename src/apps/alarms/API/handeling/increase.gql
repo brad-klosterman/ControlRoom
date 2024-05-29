@@ -1,0 +1,3 @@
+mutation increase_alarm($alarm_id: Int!, $notes: String) {
+  increase_alarm(alarm_id: $alarm_id, notes: $notes)
+}

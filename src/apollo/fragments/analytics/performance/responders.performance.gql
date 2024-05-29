@@ -1,0 +1,10 @@
+fragment core_responders_performance on responders_performance {
+  id
+  name
+  save_times
+  response_times
+  arrival_times
+  clear_times
+  late_alarms
+  total_alarms
+}

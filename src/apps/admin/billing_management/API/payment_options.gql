@@ -1,0 +1,3 @@
+query fetch_available_payment_methods {
+    fetch_available_payment_methods
+}

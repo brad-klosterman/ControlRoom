@@ -1,0 +1,13 @@
+mutation CANCEL_ALARM(
+  $alarm_id: Int!
+  $alarm_source: alarm_source!
+  $cancel_reason: String!
+  $notes: String
+) {
+  cancel_alarm(
+    alarm_id: $alarm_id
+    alarm_source: $alarm_source
+    cancel_reason: $cancel_reason
+    notes: $notes
+  )
+}

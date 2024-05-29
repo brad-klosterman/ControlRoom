@@ -1,0 +1,11 @@
+mutation create_technician($params: technician_params!) {
+  create_technician(params: $params)
+}
+
+mutation update_technician($id: Int!, $params: technician_params!) {
+  update_technician(id: $id, params: $params)
+}
+
+mutation delete_technician($id: Int!) {
+  delete_technician(id: $id)
+}

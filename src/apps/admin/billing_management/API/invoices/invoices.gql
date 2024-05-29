@@ -1,0 +1,125 @@
+fragment core_customer_invoice on customer_condensed_invoice {
+    id
+    billing_account_id
+    number
+    reference_number
+    status
+    description
+    remarks
+    currency
+    amount_paid
+    total_amount
+    issue_date
+    due_date
+    paid_on
+    created_at
+    email_sent
+    last_email_sent
+}
+
+fragment ssp_customer_invoice on customer_condensed_invoice {
+    id
+    billing_account_id
+    account_code
+    account_description
+    number
+    reference_number
+    status
+    description
+    remarks
+    currency
+    amount_paid
+    total_amount
+    outstanding_amount
+    issue_date
+    due_date
+    paid_on
+    created_at
+    email_sent
+    last_email_sent
+}
+
+fragment core_customer_transactions_invoice on customer_transactions_invoice {
+    id
+    billing_account_id
+    number
+    status
+    description
+    number
+    reference_number
+    remarks
+    currency
+    amount_paid
+    total_amount
+    payable_amount
+    outstanding_amount
+    tax
+    billing_subscription_ids
+    billing_transactions {
+        ...customer_billing_transaction
+    }
+    download_link
+    issue_date
+    due_date
+    paid_on
+    created_at
+    for_one_time_subscription
+}
+
+fragment customer_billing_transaction on billing_transaction {
+    id
+    description
+    transaction_type
+    document_type
+    transaction_status
+    currency
+    amount
+    balance
+    cancelation_reference_id
+    billing_account_id
+    billing_invoice_ids
+    created_at
+}
+
+query fetch_customer_invoice($customer_id: Int!, $id: Int!) {
+    fetch_customer_invoice(customer_id: $customer_id, id: $id) {
+        ...core_customer_transactions_invoice
+    }
+}
+
+query fetch_customer_invoices(
+    $customer_id: Int!
+    $pagination: pagination_input!
+    $search_params: fetch_invoices_params
+) {
+    fetch_customer_invoices(
+        customer_id: $customer_id
+        pagination: $pagination
+        params: $search_params
+    ) {
+        invoices {
+            ...core_customer_invoice
+        }
+        pagination {
+            count
+            items
+            page
+        }
+    }
+}
+
+query fetch_ssp_invoices(
+    $pagination: pagination_input!
+    $search_params: fetch_invoices_params
+) {
+    fetch_ssp_invoices(pagination: $pagination, params: $search_params) {
+        invoices {
+            ...ssp_customer_invoice
+        }
+        pagination {
+            count
+            items
+            page
+        }
+    }
+}

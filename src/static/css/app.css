@@ -1,0 +1,135 @@
+#root {
+  height: 100vh;
+  background-color: rgba(7,6,9,1);
+}
+/*button, input, optgroup, select, textarea {*/
+/*  line-height: 1!important;*/
+/*}*/
+
+.seon-ui-expander-arrow {
+  flex-shrink: 0;
+  transition: transform 0.15s linear;
+}
+
+.seon-ui-expander-arrow-up {
+  transform: rotate(-180deg);
+}
+
+.seon-ui-image {
+  display: block;
+  max-width: 100%;
+}
+
+/* SHAPE | ROUNDED */
+.seon-ui-image-rounded {
+  border-radius: 3px;
+}
+
+/* SHAPE | CIRCULAR */
+.seon-ui-image-circular {
+  border-radius: 50%;
+}
+
+/* DARK MODE */
+.seon-ui-dark-color-scheme .seon-ui-image {
+  opacity: 0.75;
+}
+
+/* SECTION */
+.seon-ui-expanderNode-content {
+  width: 100%;
+}
+.seon-ui-expanderNode-content-collapsing {
+  overflow-y: hidden;
+}
+
+.seon-ui-expanderNode-content-collapsed {
+  display: none;
+}
+
+.seon-ui-expanderNode-content-expanding {
+  overflow-y: hidden;
+  height: 0;
+  /* opacity: 0; */
+}
+
+/* SECTION */
+.exp-content{
+  width: 100%;
+}
+.exp-content-collapsing {
+  overflow-y: hidden;
+}
+
+.exp-content-collapsed {
+  height: 6rem;
+}
+
+.exp-content-expanding {
+  overflow-y: hidden;
+  height: 0;
+  /* opacity: 0; */
+}
+
+/* CONTENT */
+.seon-ui-expanderNode-content-inner {
+  padding-top: var(--seon-ui-global-scale-echo);
+  padding-bottom: var(--seon-ui-global-scale-echo);
+  color: var(--seon-ui-alias-text-1);
+}
+
+/* ANIMATIONS | SLIDE */
+/* Must be a transition on height otherwise it won't work. */
+.seon-ui-slide-down {
+  transition: all 0.2s linear;
+}
+
+.seon-ui-slide-up {
+  transition: all 0.2s linear;
+}
+
+/* width */
+::-webkit-scrollbar {
+  /*width: 10px;*/
+  /*right: 2px;*/
+}
+
+/*div:hover::-webkit-scrollbar {*/
+/*  width: 10px;*/
+/*}*/
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  z-index: 100;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 0.75rem;
+  /*z-index: 100;*/
+}
+
+/*!* Handle on hover *!*/
+/*::-webkit-scrollbar-thumb:hover {*/
+/*  background: #555;*/
+/*  z-index: 100;*/
+/*}*/
+
+
+.sidebar-container {
+  background-color: #000;
+}
+
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+  display:none;
+}
+.gmnoprint div {
+  background:none !important;
+}
+
+.gm-style-cc { display:none; }

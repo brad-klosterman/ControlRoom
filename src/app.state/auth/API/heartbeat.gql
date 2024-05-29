@@ -1,0 +1,7 @@
+query VALIDATE_HEARTBEAT {
+  validate_heartbeat {
+    success
+    authenticated
+    message
+  }
+}

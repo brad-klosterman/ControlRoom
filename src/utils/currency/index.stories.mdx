@@ -1,0 +1,20 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Utils/formatCurrency" />
+
+# formatCurrency
+
+Allows the application to specify the language and currency whose formatting conventions should be used to
+return a language-sensitive representation of the provided amount.
+
+## Usage
+
+**Parameters**
+
+**amount**: pass in a (`string || number`) value for the amount of money<br />
+**currency**: pass in a (`string`) value for the currency code<br />
+**local**: pass in a (`string`) value that reperesents the local code
+
+```ts
+formatCurrency({ amount: '100.00', currency: 'GBP', local: 'de-DE' });
+```

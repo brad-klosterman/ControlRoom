@@ -1,0 +1,27 @@
+mutation CREATE_RESPONDER($params: responder_params!) {
+  create_responder(params: $params) {
+    responder {
+      ...core_responder
+    }
+    success
+    message
+  }
+}
+
+mutation UPDATE_RESPONDER($id: Int!, $params: responder_params!) {
+  update_responder(id: $id, params: $params) {
+    responder {
+      ...core_responder
+    }
+    success
+    message
+  }
+}
+
+mutation DELETE_RESPONDER($id: Int!) {
+  delete_responder(id: $id) {
+    success
+    message
+    responder_id
+  }
+}

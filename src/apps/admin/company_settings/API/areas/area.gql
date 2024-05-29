@@ -1,0 +1,4 @@
+fragment core_area on area {
+  id
+  name
+}

@@ -1,0 +1,13 @@
+fragment billing_department_fragment on billing_department {
+  id
+  created_at
+  name
+}
+
+query FETCH_BILLING_DEPARTMENTS {
+  billing_departments {
+    departments {
+      ...billing_department_fragment
+    }
+  }
+}

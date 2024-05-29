@@ -1,0 +1,108 @@
+fragment DISCOUNT_TEMPLATE_CORE on discount_template {
+    id
+    name
+    description
+    tax_percentage
+    price_matrix {
+        ...DISCOUNT_PRICE_CORE
+    }
+    created_at
+    updated_at
+}
+
+fragment DISCOUNT_PRICE_CORE on discount_price {
+    id
+    recurrence
+    price_excl_tax
+    currency
+    active
+    discarded_at
+    created_at
+    updated_at
+}
+
+query fetch_discount_templates($currency: currency_codes) {
+    discount_templates(currency: $currency) {
+        success
+        discount_templates {
+            ...DISCOUNT_TEMPLATE_CORE
+        }
+        pagination {
+            count
+            items
+            page
+        }
+        message
+    }
+}
+
+mutation create_discount_template(
+    $name: String!
+    $description: String!
+    $tax_percentage: String!
+    $discount_pricings: [create_discount_price_input!]
+) {
+    create_discount_template(
+        name: $name
+        description: $description
+        tax_percentage: $tax_percentage
+        discount_pricings: $discount_pricings
+    ) {
+        success
+        message
+    }
+}
+
+mutation update_discount_template(
+    $id: Int!
+    $name: String
+    $description: String
+    $tax_percentage: String
+) {
+    update_discount_template(
+        id: $id
+        name: $name
+        description: $description
+        tax_percentage: $tax_percentage
+    ) {
+        success
+    }
+}
+
+mutation delete_discount_template($id: Int!) {
+    delete_discount_template(id: $id) {
+        success
+    }
+}
+
+mutation create_discount_price(
+    $discount_id: Int!
+    $discount_price: create_discount_price_input!
+) {
+    create_discount_price(
+        discount_id: $discount_id
+        discount_price: $discount_price
+    ) {
+        success
+    }
+}
+
+mutation update_discount_price(
+    $discount_id: Int!
+    $price_id: Int!
+    $price_excl_tax: String!
+) {
+    update_discount_price(
+        discount_id: $discount_id
+        price_id: $price_id
+        price_excl_tax: $price_excl_tax
+    ) {
+        success
+    }
+}
+
+mutation delete_discount_price($discount_id: Int!, $price_id: Int!) {
+    delete_discount_price(discount_id: $discount_id, price_id: $price_id) {
+        success
+    }
+}

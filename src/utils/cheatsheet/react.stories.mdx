@@ -1,0 +1,102 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Cheatsheet/React" />
+
+# TypeScript/React Cheatsheet
+
+Common TypeScript/React patterns 
+
+## Required properties
+
+Create a MakeRequired helper type that removes the optional flag.
+
+```ts
+
+type MakeRequired<T, K extends keyof T> = Omit<T, K> &
+  Required<{ [P in K]: T[P] }>;
+
+type ImgProps 
+  = MakeRequired<
+    JSX.IntrinsicElements["img"], 
+    "alt" | "src"
+  >;
+
+export function Img({ alt, ...allProps }: ImgProps) {
+  return <img alt={alt} {...allProps} />;
+}
+
+const zz = <Img alt="..." src="..." />;
+
+```
+
+## Omit Styled Components
+
+We omit the original type and className and intersect with our own types:
+
+```ts
+
+type StyledButton = Omit<
+  JSX.IntrinsicElements["button"],
+  "type" | "className"
+> & {
+  type: "primary" | "secondary";
+};
+
+function StyledButton({ type, ...allProps }: StyledButton) {
+  return <Button className={`btn-${type}`} />;
+}
+
+```
+
+## React.Children.toArray
+
+React.Children.toArray transforms the variable into an array so that the children.map 
+method is always available. (Which is not the case if you only have one react element 
+in children of your controller component)
+
+Use React.Children.toArray is only of interest if you want to support 1 or more children 
+in your controller. If you still only have one child, in this case you can skip its use.
+
+```ts
+
+const children = React.Childen.toArray(props.children)
+
+```
+
+
+## React cloneElement
+
+React.cloneElement Allows you to clone an already rendered JSX element (Unlike React.createElement 
+which can render a ReactComponent into a JSX element). The 2nd parameter of the function allows 
+to override the props, we can therefore write: :
+
+```ts
+
+cloneElement(child, { mine: true })
+
+function Carousel(props) {
+  const carouselRef = useRef<Carousel>();
+  return (
+    <ReactCarousel ref={carouselRef}>
+      {React.Children.toArray(props.children).map((child, index) => cloneElement({
+        key: child.name
+        carouselRef,
+        activeIndex: carouselRef.current.getActiveIndex(),
+        index,
+      }))}
+    </ReactCarousel>
+  )
+}
+
+<Carousel>
+  <Slide1 />
+  <Slide2 />
+  <Slide3 />
+</Carousel>
+
+<Carousel>
+  <Slide1 /> {/* <= in this case, use React.Children.toArray */}
+</Carousel>
+
+```
+

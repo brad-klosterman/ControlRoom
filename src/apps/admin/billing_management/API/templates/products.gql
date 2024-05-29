@@ -1,0 +1,110 @@
+fragment PRODUCT_TEMPLATE_CORE on product_template {
+    id
+    name
+    description
+    tax_percentage
+    price_matrix {
+        ...product_price_core
+    }
+    created_at
+    updated_at
+}
+
+fragment product_price_core on product_price {
+    id
+    recurrence
+    price_excl_tax
+    currency
+    active
+    discarded_at
+    created_at
+    updated_at
+}
+
+query FETCH_PRODUCT_TEMPLATES($currency: currency_codes) {
+    product_templates(currency: $currency) {
+        success
+        product_templates {
+            ...PRODUCT_TEMPLATE_CORE
+        }
+        pagination {
+            count
+            items
+            page
+        }
+        message
+    }
+}
+
+
+mutation create_product_template(
+    $name: String!
+    $description: String!
+    $tax_percentage: String!
+    $product_pricings: [create_product_price_input!]
+) {
+    create_product_template(
+        name: $name
+        description: $description
+        tax_percentage: $tax_percentage
+        product_pricings: $product_pricings
+    ) {
+        success
+        message
+    }
+}
+
+
+mutation update_product_template(
+    $id: Int!
+    $name: String
+    $description: String
+    $tax_percentage: String
+) {
+    update_product_template(
+        id: $id
+        name: $name
+        description: $description
+        tax_percentage: $tax_percentage
+    ) {
+        success
+    }
+}
+
+mutation delete_product_template($id: Int!) {
+    delete_product_template(id: $id) {
+        success
+    }
+}
+
+mutation create_product_price(
+    $product_id: Int!
+    $product_price: create_product_price_input!
+) {
+    create_product_price(
+        product_id: $product_id
+        product_price: $product_price
+    ) {
+        success
+    }
+}
+
+mutation update_product_price(
+    $product_id: Int!
+    $price_id: Int!
+    $price_excl_tax: String!
+) {
+    update_product_price(
+        product_id: $product_id
+        price_id: $price_id
+        price_excl_tax: $price_excl_tax
+    ) {
+        success
+    }
+}
+
+mutation delete_product_price($product_id: Int!, $price_id: Int!) {
+    delete_product_price(product_id: $product_id, price_id: $price_id) {
+        success
+    }
+}

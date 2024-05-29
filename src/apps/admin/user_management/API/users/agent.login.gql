@@ -1,0 +1,39 @@
+mutation LOGIN($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    seon_auth_headers {
+      client
+      uid
+      token
+      expiry
+      type
+      servcraft_token
+    }
+    user {
+      id
+      username
+      email
+      created_at
+      updated_at
+      status
+      role {
+        id
+        company_id
+        created_at
+        discarded_at
+        name
+        permissions {
+          id
+          action
+          name
+          subject_class
+        }
+      }
+    }
+  }
+}
+
+mutation LOGOUT {
+  logout {
+    success
+  }
+}

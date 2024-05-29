@@ -1,0 +1,10 @@
+.sb-show-main.sb-main-padded {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+
+.sidebar-container {
+  background-color: #000;
+}

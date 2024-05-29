@@ -1,0 +1,15 @@
+mutation assign_responder(
+  $alarm_id: Int!
+  $alarm_source: alarm_source!
+  $reassigning: Boolean!
+  $responder_id: Int
+  $offline_name: String
+) {
+  assign_responder(
+    alarm_id: $alarm_id
+    alarm_source: $alarm_source
+    reassigning: $reassigning
+    responder_id: $responder_id
+    offline_name: $offline_name
+  )
+}

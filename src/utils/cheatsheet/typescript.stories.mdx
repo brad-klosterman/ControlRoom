@@ -1,0 +1,105 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Cheatsheet/TypeScript" />
+
+# TypeScript Cheatsheet
+
+Common TypeScript patterns
+
+## Intersection Type
+
+extend is a very common pattern in JavaScript where you take two objects and create a new one that has the features of both these objects.
+An Intersection Type allows you to use this pattern in a safe way as demonstrated below:
+
+```ts
+function extend<T, U>(first: T, second: U): T & U {
+  return { ...first, ...second };
+}
+
+const x = extend({ a: "hello" }, { b: 42 });
+
+// x now has both `a` and `b`
+const a = x.a;
+const b = x.b;
+```
+
+## Type Guard
+
+Type Guards allow you to narrow down the type of an object within a conditional block.
+
+```ts
+interface A {
+  x: number;
+}
+interface B {
+  y: string;
+}
+
+function doStuff(q: A | B) {
+  if ('x' in q) {
+    // q: A
+  }
+  else {
+    // q: B
+  }
+}
+```
+
+## Literal Types
+
+Utility function to create a K:V from a list of strings
+
+```ts
+/** Utility function to create a K:V from a list of strings */
+function strEnum<T extends string>(o: Array<T>): {[K in T]: K} {
+  return o.reduce((res, key) => {
+    res[key] = key;
+    return res;
+  }, Object.create(null));
+}
+
+/** Sample create a string enum */
+
+/** Create a K:V */
+const Direction = strEnum([
+  'North',
+  'South',
+  'East',
+  'West'
+])
+
+/** Create a Type */
+type Direction = keyof typeof Direction;
+
+/** Sample using a string enum */
+let sample: Direction;
+
+sample = Direction.North; // Okay
+sample = 'North'; // Okay
+sample = 'AnythingElse'; // ERROR!
+```
+
+
+## Generics
+
+Here the constraint is between what gets passed into the function and what the function returns:
+
+```ts
+function reverse<T>(items: T[]): T[] {
+    var toreturn = [];
+    for (let i = items.length - 1; i >= 0; i--) {
+        toreturn.push(items[i]);
+    }
+    return toreturn;
+}
+
+var sample = [1, 2, 3];
+var reversed = reverse(sample);
+
+// Safety!
+reversed[0] = '1';     // Error!
+reversed = ['1', '2']; // Error!
+
+reversed[0] = 1;       // Okay
+reversed = [1, 2];     // Okay
+```

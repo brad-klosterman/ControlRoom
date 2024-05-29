@@ -1,0 +1,32 @@
+fragment core_ssp_settings on ssp_company_details {
+    name
+    email
+    time_zone
+    reaction_test_time
+    responsetime
+    timeout
+    billing_enabled
+    banking_username
+    abbreviated_name
+    trading_number
+    account_number
+    currencies
+    invoice_banking_details
+    invoice_footer_information
+    collection_days
+    invoice_due_days
+    invoice_job_last_run
+    invoice_job_status
+    web_link
+    terms_and_conditions
+}
+
+query fetch_ssp_settings {
+    ssp_company_details {
+        ...core_ssp_settings
+    }
+}
+
+mutation update_ssp_settings($params: ssp_company_details_input!) {
+    update_ssp_company_details(params: $params)
+}

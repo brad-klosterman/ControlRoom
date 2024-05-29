@@ -1,0 +1,14 @@
+fragment core_responder on responder {
+  id
+  name
+  email
+  password
+  status
+  position {
+    longitude
+    latitude
+  }
+  created_on
+  updated_on
+  area_ids
+}

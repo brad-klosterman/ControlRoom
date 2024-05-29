@@ -1,0 +1,23 @@
+fragment core_ssp_contacts on ssp_contacts {
+  headquarters {
+    primary_phone
+    secondary_phone
+    email
+    city
+    country
+    address
+  }
+  owner {
+    title
+    first_name
+    last_name
+    primary_phone
+    mobile_phone
+    email
+  }
+  technical_contact {
+    primary_phone
+    secondary_phone
+    email
+  }
+}

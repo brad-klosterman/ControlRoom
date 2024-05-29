@@ -1,0 +1,77 @@
+fragment PROPERTY_PROFILE_ZONE on property_zone {
+  id
+  description
+  number
+  zone_type
+  transmitter {
+    id
+    number
+  }
+  is_overactive
+  on_hold_mode {
+    enabled
+    enabled_at
+    duration
+  }
+}
+
+mutation CREATE_PROPERTY_ZONE(
+  $customer_id: Int!
+  $property_id: Int!
+  $params: property_zone_params!
+) {
+  create_property_zone(
+    customer_id: $customer_id
+    property_id: $property_id
+    params: $params
+  ) {
+    success
+    message
+  }
+}
+
+mutation UPDATE_PROPERTY_ZONE(
+  $customer_id: Int!
+  $property_id: Int!
+  $zone_id: Int!
+  $params: property_zone_params!
+) {
+  update_property_zone(
+    customer_id: $customer_id
+    property_id: $property_id
+    zone_id: $zone_id
+    params: $params
+  ) {
+    success
+    message
+  }
+}
+
+mutation DELETE_PROPERTY_ZONE($zone_id: Int!, $property_id: Int!) {
+  delete_property_zone(zone_id: $zone_id, property_id: $property_id)
+}
+
+mutation SET_ZONE_ON_HOLD_MODE(
+  $property_id: Int!
+  $zone_id: Int!
+  $on_hold_time: String!
+) {
+  set_zone_on_hold_mode(
+    property_id: $property_id
+    zone_id: $zone_id
+    on_hold_time: $on_hold_time
+  )
+}
+
+mutation UPDATE_PROPERTY_STATUS(
+  $property_id: Int!
+  $params: update_property_status_params!
+) {
+  update_property_status(property_id: $property_id, params: $params) {
+    success
+    message
+    property {
+      ...customer_profile_property
+    }
+  }
+}

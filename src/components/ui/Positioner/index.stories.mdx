@@ -1,0 +1,24 @@
+import Positioner from '.';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Positioner/Docs" component={Positioner} />
+
+# Positioner
+
+The `<Positioner>` component allows you to position a component around an anchor.
+
+<Canvas>
+  <Story id="components-positioner--single-tool-tip" />
+</Canvas>
+
+## Props
+
+- `content` A function that should return a React Node `({ ref, isVisible, setIsVisible }) => ReactNode`
+- `children` Requires children `ReactNode`
+- `position` The position of the content using the `Position` enum `default: Position.BOTTOM`
+- `anchorOffset` Offset relative to the anchor. `default: xSmall`
+- `bodyOffset` Offset away from the edges of the body `default: anchorOffset`
+- `animationDuration` The duration of the show/hide transition `default: 300`
+- `zIndex` The zIndex of the content `default: 5`
+- `onMount` callback after the content mounts `default: () => {}`
+- `onDestroy` callback after destruction of content `default: () => {}`

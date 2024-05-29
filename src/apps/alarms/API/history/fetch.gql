@@ -1,0 +1,70 @@
+query history_alarms(
+    $pagination: pagination_input!,
+    $search_params: history_alarms_params
+) {
+    history_alarms(
+        pagination: $pagination,
+        search_params: $search_params
+    ) {
+        success
+        alarms {
+            id
+            alarm_type
+            alarm_state
+            procedure_timestamps {
+                updated_at
+                created_at
+                agent_acknowledged_instructions_at
+                agent_phoned_first_keyholder_at
+                keyholder_confirmed_emergency_at
+                responder_dispatched_at
+                responder_enroute_at
+                responder_arrived_at
+                responder_saved_property_at
+                responder_closed_report_at
+                alarm_completed_at
+                alarm_reopened_at
+                keyholder_cancelled_at
+                customer_verified_password_at
+            }
+            agent_id
+            area_id
+            customer {
+                id
+                contact {
+                    title
+                    first_name
+                    last_name
+                    landline_phone
+                    mobile_phone
+                    other_phone
+                }
+                medical {
+                    bloodtype
+                    gender
+                    age
+                    insurance_name
+                    insurance_policy_id
+                    medical_conditions
+                }
+                profile_picture
+            }
+            address
+            coordinates {
+                latitude
+                longitude
+            }
+            created_at
+            updated_at
+            enroute_at
+            responder_assigned_at
+            saved_at
+            closed_at
+        }
+        pagination {
+            count
+            items
+            page
+        }
+    }
+}

@@ -1,0 +1,144 @@
+mutation update_customer_invoice(
+    $customer_id: Int!
+    $invoice_id: Int!
+    $params: update_customer_invoice_params!
+) {
+    update_customer_invoice(
+        customer_id: $customer_id
+        invoice_id: $invoice_id
+        params: $params
+    )
+}
+
+mutation add_payment(
+    $customer_id: Int!
+    $params: add_payment_params!
+) {
+    add_payment(
+        customer_id: $customer_id
+        params: $params
+    )
+}
+
+mutation add_credit_note(
+    $customer_id: Int!
+    $params: add_credit_note_params!
+) {
+    add_credit_note(
+        customer_id: $customer_id
+        params: $params
+    )
+}
+
+mutation add_debit_note(
+    $customer_id: Int!
+    $params: add_debit_note_params!
+) {
+    add_debit_note(
+        customer_id: $customer_id
+        params: $params
+    )
+}
+
+mutation cancel_refund_invoice(
+    $customer_id: Int!
+    $invoice_id: Int!
+    $params: cancel_refund_invoice_params!
+) {
+    cancel_refund_invoice(
+        customer_id: $customer_id
+        invoice_id: $invoice_id
+        params: $params
+    )
+}
+
+mutation reject_billing_transaction(
+    $customer_id: Int!
+    $transaction_id: Int!
+    $invoice_id: Int
+) {
+    reject_billing_transaction(
+        customer_id: $customer_id
+        invoice_id: $invoice_id
+        transaction_id: $transaction_id
+    )
+}
+
+mutation transfer_transaction(
+    $customer_id: Int!
+    $params: transfer_transaction_params!
+) {
+    transfer_transaction(
+        customer_id: $customer_id
+        params: $params
+    )
+}
+
+mutation generate_customers_invoices(
+    $invoice_date: String!
+    $invoice_description: String!
+    $month_of: String!
+) {
+    generate_customers_invoices(
+        invoice_date: $invoice_date
+        invoice_description: $invoice_description
+        month_of: $month_of
+    )
+}
+
+mutation regenerate_customers_invoices(
+    $customer_id: Int!
+    $invoice_date: String!
+    $invoice_description: String!
+    $month_of: String!
+) {
+    regenerate_customers_invoices(
+        customer_id: $customer_id
+        invoice_date: $invoice_date
+        invoice_description: $invoice_description
+        month_of: $month_of
+    )
+}
+
+mutation regenerate_one_time_invoice(
+    $customer_id: Int!
+    $invoice_id: Int!
+) {
+    regenerate_one_time_invoice(
+      customer_id: $customer_id,
+      invoice_id: $invoice_id
+    )
+}
+
+
+mutation email_customers_invoices(
+    $month_of: String!
+    $email_body_text: String
+    $invoice_ids: [Int]
+) {
+    email_customers_invoices(
+        month_of: $month_of
+        email_body_text: $email_body_text
+        invoice_ids: $invoice_ids
+    )
+}
+
+mutation email_customers_invoices_advanced(
+    $params: email_customers_invoices_advanced_params!
+) {
+    email_customers_invoices_advanced(
+        params: $params
+    )
+}
+
+mutation email_customer_transaction(
+    $customer_id: Int!
+    $transaction_id: Int!
+    $email_body_text: String
+) {
+    email_customer_transaction(
+        customer_id: $customer_id
+        transaction_id: $transaction_id
+        email_body_text: $email_body_text
+    )
+}

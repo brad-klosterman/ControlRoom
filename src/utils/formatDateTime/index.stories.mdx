@@ -1,0 +1,24 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Utils/formatDateTime" />
+
+# formatDateTime
+
+Allows the application to specify the language to whose formatting conventions should be used. <br/>
+Returns a language-sensitive representation of the provided date, time or date+time.
+
+## Usage
+
+**Parameters**
+
+**date**: pass in an ISO date (`string`) value<br />
+**local**: pass in a (`string`) value that reperesents the local code<br />
+**format**: pass in a one of these (`string ['date', 'time', 'dateTime']`) values to show date, time or both
+
+```ts
+formatDateTime({
+  date: '2024-06-30T23:00:00.000Z',
+  locale: 'en-GB',
+  format: 'dateTime',
+});
+```

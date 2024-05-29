@@ -1,0 +1,11 @@
+mutation UPDATE_ALARM_NOTES(
+  $alarm_id: Int!
+  $alarm_source: alarm_source!
+  $notes: String!
+) {
+  update_alarm_notes(
+    alarm_id: $alarm_id
+    alarm_source: $alarm_source
+    notes: $notes
+  )
+}

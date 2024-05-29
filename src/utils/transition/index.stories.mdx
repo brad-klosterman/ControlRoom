@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Utils/transition" />
+
+# Transition
+
+Set transition values consistently, with default values as a fallback.
+
+## Usage
+
+**Default values**
+
+Pass a property name (`string`) argument to set default transition values.
+
+```ts
+transition('color'); // 'color 0.25s cubic-bezier(...) 0s'
+```
+
+**Specific values**
+
+Pass a property group (`array`) argument to set specific transition values. Duration and delay values are expected as an integer, and are used to multiply the theme duration value.
+
+```ts
+transition(['color', 4, 2, 'ease']); // 'color 1s ease 0.5s'
+```
+
+**Multiple properties**
+
+Pass a property name (`string`) or property group (`array`) argument to set multiple transition property values.
+
+```ts
+transition(['color', 4, 2, 'ease'], 'opacity')}; // 'color 1s ease 0.5s, opacity 0.25s cubic-bezier(...) 0s'
+```

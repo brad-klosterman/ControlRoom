@@ -1,0 +1,5 @@
+query fetch_technicians {
+  fetch_technicians {
+    ...core_technician
+  }
+}

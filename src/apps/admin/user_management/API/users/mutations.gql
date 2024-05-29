@@ -1,0 +1,49 @@
+mutation ASSIGN_AGENT_AREAS($areas: [Int]) {
+  assign_agent_areas(areas: $areas) {
+    areas
+    success
+  }
+}
+
+mutation UNASSIGN_AGENT_AREAS($areas: [Int]) {
+  unassign_agent_areas(areas: $areas) {
+    areas
+    success
+  }
+}
+
+mutation DELETE_AGENT($agent_id: Int!) {
+  delete_agent(agent_id: $agent_id) {
+    success
+    message
+    agent
+  }
+}
+
+mutation UPDATE_AGENT($id: Int!, $params: agent_params!) {
+  update_agent(id: $id, params: $params) {
+    success
+    message
+    agent {
+      ...core_agent
+    }
+  }
+}
+mutation CREATE_AGENT($params: agent_params!) {
+  create_agent(params: $params) {
+    success
+    message
+    agent {
+      ...core_agent
+    }
+  }
+}
+#####
+# mutation DELETE_AGENT($agent_id: Int!) {
+#   delete_agent(agent_id: $agent_id) {
+#     success
+#     message
+#     guardian
+#   }
+# }
+#####

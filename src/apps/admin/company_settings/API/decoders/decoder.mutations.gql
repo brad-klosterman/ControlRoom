@@ -1,0 +1,27 @@
+mutation CREATE_DECODER($params: create_decoder_input!) {
+  create_decoder(params: $params) {
+    decoder {
+      ...core_decoder
+    }
+    success
+    message
+  }
+}
+
+mutation UPDATE_DECODER($params: update_decoder_input!) {
+  update_decoder(params: $params) {
+    decoder {
+      ...core_decoder
+    }
+    success
+    message
+  }
+}
+
+mutation DELETE_DECODER($id: Int!) {
+  delete_decoder(id: $id) {
+    decoder
+    success
+    message
+  }
+}

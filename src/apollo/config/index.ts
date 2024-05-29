@@ -1,0 +1,1 @@
+export { buildApolloClient } from './config';

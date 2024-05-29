@@ -1,0 +1,110 @@
+fragment customer_account_profile on customer {
+  id
+  seon_account_code
+  account_code
+  account_description
+  document_id_number
+  contact {
+    ...customer_account_contact
+  }
+  system_status {
+    status
+    created_on
+    suspend_date
+    suspend_reason
+    has_overactive_alarms
+  }
+  properties {
+    ...customer_profile_property
+  }
+  billing {
+    ...CUSTOMER_BILLING_PROFILE
+  }
+  scheduled_status_changes {
+    ...scheduled_status_changes
+  }
+}
+
+fragment scheduled_status_changes on scheduled_status_changes {
+  status
+  change_status_at
+  status_changed_reason
+  status_changed_reason_id
+  reactivation_date
+}
+
+fragment customer_account_contact on customer_contact {
+  title
+  first_name
+  last_name
+  landline_phone
+  mobile_phone
+  other_phone
+  email
+  preferred_contact_method
+}
+
+query fetch_customer_account($id: Int!) {
+  fetch_customer_account(id: $id) {
+    ...customer_account_profile
+  }
+}
+
+mutation create_customer_account(
+  $contact_details: customer_contact_params!
+  $account_code: String
+  $account_description: String
+  $account_currency: currency_codes
+  $account_manager_id: Int
+  $invoice_clubbing: invoice_clubbing
+  $billing_department_id: Int
+  $document_id_number: String
+) {
+  create_customer_account(
+    account_code: $account_code
+    account_description: $account_description
+    account_currency: $account_currency
+    account_manager_id: $account_manager_id
+    invoice_clubbing: $invoice_clubbing
+    contact_details: $contact_details
+    billing_department_id: $billing_department_id
+    document_id_number: $document_id_number
+  ) {
+    customer_id
+  }
+}
+
+mutation update_customer_account(
+  $id: Int!
+  $contact_details: customer_contact_params!
+  $account_code: String
+  $account_description: String
+  $account_currency: currency_codes
+  $account_manager_id: Int
+  $invoice_clubbing: invoice_clubbing
+  $billing_department_id: Int
+  $document_id_number: String
+) {
+  update_customer_account(
+    id: $id
+    account_code: $account_code
+    account_description: $account_description
+    account_currency: $account_currency
+    account_manager_id: $account_manager_id
+    invoice_clubbing: $invoice_clubbing
+    contact_details: $contact_details
+    billing_department_id: $billing_department_id
+    document_id_number: $document_id_number
+  )
+}
+
+mutation update_customer_status(
+  $customer_id: Int!
+  $params: update_customer_status_params!
+) {
+  update_customer_status(customer_id: $customer_id, params: $params)
+}
+
+mutation delete_customer_account($id: Int!) {
+  delete_customer_account(id: $id)
+}

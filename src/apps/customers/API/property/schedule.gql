@@ -1,0 +1,10 @@
+mutation UPDATE_PROPERTY_SCHEDULE(
+  $customer_id: Int!
+  $property_id: Int!
+  $schedules: [property_time_schedule_params!]!
+) {
+  update_property_schedule(customer_id: $customer_id, property_id: $property_id, schedules: $schedules) {
+    success
+    message
+  }
+}

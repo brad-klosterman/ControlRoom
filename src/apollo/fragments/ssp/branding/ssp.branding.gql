@@ -1,0 +1,4 @@
+fragment core_ssp_branding on ssp_branding {
+  logo_url
+}
+

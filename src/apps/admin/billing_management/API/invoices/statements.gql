@@ -1,0 +1,22 @@
+query fetch_customer_billing_transactions(
+  $customer_id: Int!
+  $pagination: pagination_input!
+) {
+  fetch_billing_transactions(
+    customer_id: $customer_id
+    pagination: $pagination
+  ) {
+    transactions {
+      ...customer_billing_transaction
+    }
+    pagination {
+      count
+      items
+      page
+    }
+  }
+}
+
+mutation generate_customer_statement($customer_id: Int!) {
+  generate_customer_statement(customer_id: $customer_id)
+}

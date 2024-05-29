@@ -1,0 +1,31 @@
+/* SECTION */
+.seon-ui-expanderNode-content-collapsing {
+    overflow-y: hidden;
+}
+
+.seon-ui-expanderNode-content-collapsed {
+    display: none;
+}
+
+.seon-ui-expanderNode-content-expanding {
+    overflow-y: hidden;
+    height: 0;
+    /* opacity: 0; */
+}
+
+/* CONTENT */
+.seon-ui-expanderNode-content-inner {
+    padding-top: var(--seon-ui-global-scale-echo);
+    padding-bottom: var(--seon-ui-global-scale-echo);
+    color: var(--seon-ui-alias-text-1);
+}
+
+/* ANIMATIONS | SLIDE */
+/* Must be a transition on height otherwise it won't work. */
+.seon-ui-slide-down {
+    transition: all .2s linear;
+}
+
+.seon-ui-slide-up {
+    transition: all .2s linear;
+}

@@ -1,0 +1,14 @@
+query fetch_areas($pagination: pagination_input!) {
+  areas(pagination: $pagination) {
+    areas {
+      ...core_area
+    }
+    success
+    message
+    pagination {
+      count
+      items
+      page
+    }
+  }
+}

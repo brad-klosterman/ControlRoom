@@ -1,0 +1,24 @@
+query FETCH_DECODER($id: Int!) {
+  decoder(id: $id) {
+    decoder {
+      ...core_decoder
+    }
+    success
+    message
+  }
+}
+
+query FETCH_DECODERS($pagination: pagination_input!) {
+  decoders(pagination: $pagination) {
+    decoders {
+      ...core_decoder
+    }
+    success
+    message
+    pagination {
+      count
+      items
+      page
+    }
+  }
+}

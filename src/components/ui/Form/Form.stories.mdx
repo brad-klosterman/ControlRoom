@@ -1,0 +1,49 @@
+import Form from './index';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Form/Docs" component={Form} />
+
+# Form
+
+The `<Form>` component renders the form wrap. The `<Form.FieldGroup>` component wraps a form components with proper spacing,
+along with support for a label, info text, and error state. To ensure accessibility, use `<Form.Label>` for the label.
+
+## Fields
+
+All fields are wrapped in `<Form.Field>`.
+
+<Canvas>
+  <Story id="components-form--input" />
+</Canvas>
+
+### Disabled
+
+Disabled with `disabled` prop on form element
+
+<Canvas>
+  <Story id="components-form--disabled" />
+</Canvas>
+
+### Error
+
+Add `error` to the element `<Form.Field>` to display an error under the field.
+
+<Canvas>
+  <Story id="components-form--error" />
+</Canvas>
+
+### Icon Input
+
+You can add an Icon within the element `<Form.Field>`
+
+<Canvas>
+  <Story id="components-form--icon-input" />
+</Canvas>
+
+### Icon button Input
+
+You can also add an Icon button here
+
+<Canvas>
+  <Story id="components-form--icon-button-input" />
+</Canvas>

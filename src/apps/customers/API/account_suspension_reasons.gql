@@ -1,0 +1,10 @@
+fragment account_suspension_reason on account_suspension_reason {
+  id
+  reason
+}
+
+query account_suspension_reasons {
+  account_suspension_reasons {
+    ...account_suspension_reason
+  }
+}

@@ -1,0 +1,10 @@
+fragment core_agents_performance on agents_performance {
+  id
+  name
+  total_alarms
+  dispatch_times
+  save_times
+  acknowledge_times
+  call_times
+  late_alarms
+}

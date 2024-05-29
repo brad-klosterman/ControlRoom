@@ -1,0 +1,27 @@
+mutation create_ssp_area($name: String!) {
+ create_ssp_area(area_name: $name) {
+   area {
+     ...core_area
+   }
+   success
+   message
+ }
+}
+
+mutation update_ssp_area($id: Int!, $name: String) {
+ update_ssp_area(area_id: $id, area_name: $name) {
+   area {
+     ...core_area
+   }
+   success
+   message
+ }
+}
+
+mutation discard_ssp_area($id: Int!, $reassign_to_area: Int!) {
+ discard_ssp_area(area_id: $id, reassign_to_area: $reassign_to_area) {
+   area
+   success
+   message
+ }
+}

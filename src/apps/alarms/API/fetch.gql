@@ -1,0 +1,16 @@
+query fetch_alarm($id: Int!) {
+  alarm(id: $id) {
+    ...core_alarm
+  }
+}
+
+query fetch_alarms($alarm_stack: alarm_stack!) {
+  alarms(alarm_stack: $alarm_stack) {
+    alarms {
+      ...core_alarm
+    }
+    total
+    success
+  }
+}
+

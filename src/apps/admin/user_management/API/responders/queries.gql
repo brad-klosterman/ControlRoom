@@ -1,0 +1,11 @@
+query FETCH_RESPONDER($id: Int!) {
+  responder(id: $id) {
+    ...core_responder
+  }
+}
+
+query FETCH_RESPONDERS {
+  responders {
+    ...core_responder
+  }
+}

@@ -1,0 +1,153 @@
+fragment core_alarm on alarm {
+  id
+  type
+  priority
+  source
+  alarm_state
+  customer {
+    ...alarm_customer
+  }
+  property {
+    id
+    name
+    type
+    images {
+      url
+    }
+    video_feeds {
+      url
+    }
+    geospatial {
+      coordinates {
+        longitude
+        latitude
+      }
+      entire_address
+      area {
+        name
+      }
+    }
+    keyholders {
+      id
+      name
+      description
+      mobile_phone
+      landline_phone
+      call_order
+      password
+    }
+    instructions {
+      HOLIDAY {
+        id
+        type
+        note
+      }
+      NOTE {
+        id
+        type
+        note
+      }
+      AGENT {
+        id
+        type
+        note
+      }
+      RESPONDER {
+        id
+        type
+        note
+      }
+      KEY {
+        id
+        type
+        note
+      }
+    }
+    password
+    duress_password
+    testing_enabled
+    status
+  }
+  triggered_zones {
+    id
+    time_triggered
+    description
+    zone_type
+    is_overactive
+    on_hold_mode {
+      enabled
+    }
+  }
+  triggered_transmitter {
+    ...core_transmitter
+  }
+  assigned_agents {
+    id
+    name
+  }
+  assigned_responders {
+    id
+    name
+    offline
+  }
+  incident_report {
+    ...core_alarm_incident_report
+  }
+  procedure_timestamps {
+    updated_at
+    created_at
+    agent_acknowledged_instructions_at
+    agent_phoned_first_keyholder_at
+    keyholder_confirmed_emergency_at
+    responder_dispatched_at
+    responder_enroute_at
+    responder_arrived_at
+    responder_saved_property_at
+    responder_closed_report_at
+    alarm_completed_at
+    alarm_reopened_at
+    keyholder_cancelled_at
+    customer_verified_password_at
+  }
+  notes {
+    id
+    note
+    agent_id
+    created_at
+    updated_at
+  }
+  keyholder_logs {
+    id
+    client_keyholder_id
+    keyholder_name
+    keyholder_phone
+    password_verified
+    reached
+    created_at
+  }
+  panel_information {
+    type
+    panel_id
+  }
+}
+
+fragment alarm_customer on customer {
+  id
+  contact {
+    title
+    first_name
+    last_name
+    landline_phone
+    mobile_phone
+    other_phone
+  }
+  medical {
+    age
+    gender
+    medical_conditions
+    bloodtype
+    insurance_name
+    insurance_policy_id
+  }
+  profile_picture
+}

@@ -1,0 +1,3 @@
+subscription SUBSCRIBE_ALARMS_UPDATE($alarm_stack: alarm_stack!) {
+  alarms_updated(alarm_stack: $alarm_stack)
+}

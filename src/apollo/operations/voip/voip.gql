@@ -1,0 +1,48 @@
+mutation VOIP_START_CALL(
+  $number: String!
+  $token: String!
+  $pbx_url: String!
+  $extension: String!
+) {
+  voip_start_call(
+    number: $number
+    token: $token
+    pbx_url: $pbx_url
+    extension: $extension
+  ) {
+    success
+    call_id
+  }
+}
+
+mutation VOIP_END_CALL(
+  $token: String!
+  $pbx_url: String!
+  $channel_id: String!
+) {
+  voip_end_call(token: $token, pbx_url: $pbx_url, channel_id: $channel_id) {
+    success
+  }
+}
+
+mutation VOIP_LOG_CALL(
+  $alarm_id: Int!
+  $keyholder_id: Int!
+  $keyholder_was_reached: Boolean!
+  $client_id: Int!
+) {
+  voip_log_call(
+    alarm_id: $alarm_id
+    client_id: $client_id
+    keyholder_id: $keyholder_id
+    keyholder_was_reached: $keyholder_was_reached
+  ) {
+    success
+  }
+}
+
+mutation VOIP_HEARTBEAT($token: String!, $pbx_url: String!) {
+  voip_heartbeat(token: $token, pbx_url: $pbx_url) {
+    success
+  }
+}

@@ -1,0 +1,27 @@
+// import formatDateTime from '.';
+
+// describe('formatCurrency', () => {
+//   it('formats date for en-GB local', () => {
+//     const resultDate = formatDateTime({
+//       date: '2024-06-30T23:00:00.000Z',
+//       format: 'date',
+//       locale: 'en-GB',
+//     });
+
+//     const resultTime = formatDateTime({
+//       date: '2024-06-30T23:00:00.000Z',
+//       format: 'time',
+//       locale: 'en-GB',
+//     });
+
+//     const resultDateTime = formatDateTime({
+//       date: '2024-06-30T23:00:00.000Z',
+//       format: 'dateTime',
+//       locale: 'en-GB',
+//     });
+
+//     expect(resultDate).toEqual('01/07/2024');
+//     expect(resultTime).toEqual('01:00:00');
+//     expect(resultDateTime).toEqual('01/07/2024 01:00:00');
+//   });
+// });

@@ -1,0 +1,17 @@
+query FETCH_TRANSMITTERS(
+  $search_params: fetch_transmitters_params
+  $pagination: pagination_input!
+) {
+  transmitters(search_params: $search_params, pagination: $pagination) {
+    transmitters {
+      ...core_transmitter
+    }
+    success
+    message
+    pagination {
+      count
+      items
+      page
+    }
+  }
+}

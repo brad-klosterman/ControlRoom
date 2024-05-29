@@ -1,0 +1,144 @@
+query fetch_ssp_reports($pagination: pagination_input!) {
+  fetch_ssp_reports(pagination: $pagination) {
+    reports {
+      id
+      name
+      status
+      download_link
+      records_count
+      filters {
+        active
+        state
+        area_id_in
+        decoder_eq
+        alarm_type_eq
+        created_at_gteq
+        created_at_lteq
+      }
+      date_from
+      date_to
+      created_at
+    }
+    pagination {
+      count
+      items
+      page
+    }
+  }
+}
+
+query generate_false_alarms_report(
+  $area_ids: [Int!]
+  $alarm_type: String
+  $date_from: String
+  $date_to: String
+) {
+  generate_false_alarms_report(
+    area_ids: $area_ids
+    alarm_type: $alarm_type
+    date_from: $date_from
+    date_to: $date_to
+  )
+}
+
+query generate_overactive_alarms_report(
+  $area_ids: [Int!]
+  $alarm_type: String
+  $date_from: String
+  $date_to: String
+) {
+  generate_overactive_alarms_report(
+    area_ids: $area_ids
+    alarm_type: $alarm_type
+    date_from: $date_from
+    date_to: $date_to
+  )
+}
+
+query generate_home_alarm_report(
+  $area_ids: [Int!]
+  $alarm_type: String
+  $date_from: String
+  $date_to: String
+) {
+  generate_home_alarm_report(
+    area_ids: $area_ids
+    alarm_type: $alarm_type
+    date_from: $date_from
+    date_to: $date_to
+  )
+}
+
+query generate_transmitters_stock_report(
+  $area_ids: [Int!]
+  $transmitter_status: transmitter_status
+  $decoder_name: String
+) {
+  generate_transmitters_stock_report(
+    area_ids: $area_ids
+    transmitter_status: $transmitter_status
+    decoder_name: $decoder_name
+  )
+}
+
+query generate_responders_delegations_report(
+  $area_ids: [Int!]
+  $date_from: String
+  $date_to: String
+) {
+  generate_responders_delegations_report(
+    area_ids: $area_ids
+    date_from: $date_from
+    date_to: $date_to
+  )
+}
+
+query generate_ob_stats_report(
+  $area_ids: [Int!]
+  $active: Boolean
+  $alarm_type: String
+  $date_from: String
+  $date_to: String
+) {
+  generate_ob_stats_report(
+    area_ids: $area_ids
+    active: $active
+    alarm_type: $alarm_type
+    date_from: $date_from
+    date_to: $date_to
+  )
+}
+
+query generate_customers_properties_report(
+  $area_ids: [Int!]
+  $property_active: Boolean
+) {
+  generate_customers_properties_report(
+    area_ids: $area_ids
+    property_active: $property_active
+  )
+}
+
+query generate_customers_keyholders_report(
+  $area_ids: [Int!]
+  $property_active: Boolean
+) {
+  generate_customers_keyholders_report(
+    area_ids: $area_ids
+    property_active: $property_active
+  )
+}
+
+query generate_work_shift_report(
+  $day_shift_start: String!
+  $date_from: String!
+  $date_to: String!
+  $night_shift_start: String!
+) {
+  generate_work_shift_report(
+    day_shift_start: $day_shift_start
+    date_from: $date_from
+    date_to: $date_to
+    night_shift_start: $night_shift_start
+  )
+}

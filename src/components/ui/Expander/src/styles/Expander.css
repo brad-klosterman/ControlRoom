@@ -1,0 +1,178 @@
+.seon-ui-expander {
+    overflow-anchor: none;
+    width: 100%;
+    /* display: initial; */
+}
+
+/* BORDERED */
+.seon-ui-expander-bordered {
+    box-shadow: var(--seon-ui-alias-elevation-skim);
+    border-radius: var(--seon-ui-global-scale-bravo);
+    background-color: var(--seon-ui-alias-background-1);
+}
+
+/* HEADER */
+.seon-ui-expander-header {
+    margin-bottom: 0;
+}
+
+/* HEADER BORDERLESS */
+.seon-ui-expander-borderless .seon-ui-expander-header .seon-ui-expander-trigger {
+    padding-top: var(--seon-ui-global-scale-bravo);
+    padding-bottom: var(--seon-ui-global-scale-bravo);
+}
+
+.seon-ui-expander-header:first-child {
+    margin-top: 0;
+}
+
+/* TRIGGER */
+.seon-ui-expander-trigger {
+    outline: none;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    transition: background-color .3s ease-in, border-bottom-left-radius 5s linear, border-bottom-right-radius 5s linear;
+    width: 100%;
+    color: var(--seon-ui-alias-text-2);
+    line-height: inherit;
+    font-weight: inherit;
+    position: relative;
+    padding: 0 var(--seon-ui-global-scale-bravo);
+}
+
+/* TRIGGER | BORDERED */
+.seon-ui-expander-bordered .seon-ui-expander-trigger {
+    background-color: var(--seon-ui-alias-background-1);
+    padding: calc(var(--seon-ui-global-scale-delta) - 1px) var(--seon-ui-global-scale-echo) var(--seon-ui-global-scale-delta) var(--seon-ui-global-scale-foxtrot);
+    border-top: 1px solid var(--seon-ui-alias-border-2);
+}
+
+/* TRIGGER | BORDERED | HOVER */
+.seon-ui-expander .seon-ui-expander-trigger:not([disabled]):hover,
+.seon-ui-expander .seon-ui-expander-trigger-hover:not([disabled]) {
+    background-color: var(--seon-ui-alias-background-expander-hover);
+}
+
+/* TRIGGER | CONTENT */
+.seon-ui-expander-trigger-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    line-height: 1;
+}
+
+/* TRIGGER | CONTENT | TITLE */
+.seon-ui-expander-title {
+    line-height: 1;
+}
+
+/* TRIGGER | BORDERED | HAS ICON */
+.seon-ui-expander-bordered .seon-ui-expander-trigger.seon-ui-expander-trigger-has-icon {
+    padding-left: var(--seon-ui-global-scale-delta);
+}
+
+.seon-ui-expander-icon + .seon-ui-expander-title {
+    margin-left: var(--seon-ui-global-scale-alpha);
+}
+
+/* PANEL */
+.seon-ui-expander-panel {
+    color: var(--seon-ui-alias-text-1);
+    background-color: var(--seon-ui-alias-background-1);
+}
+
+/* PANEL | BORDERLESS */
+.seon-ui-expander-borderless .seon-ui-expander-panel {
+    padding-left: var(--seon-ui-global-scale-bravo);
+    padding-right: var(--seon-ui-global-scale-bravo);
+}
+
+/* PANEL | BORDERED */
+.seon-ui-expander-bordered .seon-ui-expander-panel {
+    padding-left: var(--seon-ui-global-scale-foxtrot);
+    padding-right: calc(var(--seon-ui-global-scale-foxtrot) + var(--seon-ui-global-scale-foxtrot));
+}
+
+/* STATES */
+/* DISABLED */
+.seon-ui-expander-trigger[disabled] {
+    cursor: not-allowed;
+}
+
+.seon-ui-expander-trigger[disabled] .seon-ui-expander-title,
+.seon-ui-expander-trigger[disabled] .seon-ui-expander-arrow {
+    opacity: var(--seon-ui-disabled-opacity);
+}
+
+/* HOVER */
+.seon-ui-expander-trigger:not([disabled]):hover ,
+.seon-ui-expander-trigger-hover:not([disabled]) {
+    color: var(--seon-ui-alias-text-2-hover);
+}
+
+/* ACTIVE */
+.seon-ui-expander-trigger:not([disabled]):active,
+.seon-ui-expander-trigger-active:not([disabled]) {
+    color: var(--seon-ui-alias-text-2-active);
+}
+
+/* FOCUS */
+.seon-ui-expander-trigger::before {
+    content: "";
+    position: absolute;
+    border: var(--seon-ui-focus-ring-thickness-md) transparent solid;
+    border-radius: var(--seon-ui-shape-rounded);
+    pointer-events: none;
+}
+
+/* FOCUS | BORDERLESS */
+.seon-ui-expander-borderless .seon-ui-expander-trigger::before {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+/* FOCUS | BORDERED */
+.seon-ui-expander-bordered .seon-ui-expander-trigger::before {
+    left: var(--seon-ui-global-scale-delta);
+    right: var(--seon-ui-global-scale-delta);
+    bottom: var(--seon-ui-global-scale-bravo);
+    top: var(--seon-ui-global-scale-bravo);
+}
+
+.seon-ui-expander-trigger:focus-visible,
+.seon-ui-expander-trigger-focus {
+    outline: none;
+    position: relative;
+}
+
+.seon-ui-expander-trigger:focus-visible::before,
+.seon-ui-expander-trigger-focus::before {
+    border-color: var(--seon-ui-focus-ring-color);
+}
+
+/* BORDERED | FIRST ITEM | BORDER RADIUS */
+.seon-ui-expander-bordered .seon-ui-expander-header:first-of-type,
+.seon-ui-expander-bordered .seon-ui-expander-header:first-of-type .seon-ui-expander-trigger {
+    border-top-left-radius: var(--seon-ui-global-scale-bravo);
+    border-top-right-radius: var(--seon-ui-global-scale-bravo);
+}
+
+/* BORDERED | LAST ITEM | BORDER RADIUS */
+.seon-ui-expander-bordered .seon-ui-expander-header:last-of-type,
+.seon-ui-expander-bordered .seon-ui-expander-header:last-of-type .seon-ui-expander-trigger {
+    border-bottom-left-radius: var(--seon-ui-global-scale-bravo);
+    border-bottom-right-radius: var(--seon-ui-global-scale-bravo);
+}
+
+/* BORDERED | LAST PANEL | BORDER RADIUS */
+.seon-ui-expander-bordered .seon-ui-expander-panel:last-of-type,
+.seon-ui-expander-bordered .seon-ui-expander-panel:last-of-type .seon-ui-expander-trigger {
+    border-bottom-left-radius: var(--seon-ui-global-scale-bravo);
+    border-bottom-right-radius: var(--seon-ui-global-scale-bravo);
+}

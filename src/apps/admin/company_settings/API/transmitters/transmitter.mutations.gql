@@ -1,0 +1,37 @@
+mutation CREATE_TRANSMITTER($params: create_transmitter_params!) {
+  create_transmitter(params: $params) {
+    transmitter {
+      ...core_transmitter
+    }
+    success
+    message
+  }
+}
+
+mutation UPDATE_TRANSMITTER($id: Int!, $params: update_transmitter_params!) {
+  update_transmitter(id: $id, params: $params) {
+    transmitter {
+      ...core_transmitter
+    }
+    success
+    message
+  }
+}
+
+mutation UPDATE_TRANSMITTER_STATUS(
+  $id: Int!
+  $property_id: Int
+  $status: transmitter_status!
+) {
+  update_transmitter_status(
+    id: $id
+    property_id: $property_id
+    status: $status
+  ) {
+    transmitter {
+      ...core_transmitter
+    }
+    success
+    message
+  }
+}

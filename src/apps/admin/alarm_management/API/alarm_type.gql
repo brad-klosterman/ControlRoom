@@ -1,0 +1,54 @@
+fragment core_alarm_type on alarm_type {
+    id
+    priority
+    alarm_description
+    alarm_type_name
+    description
+    history
+    message_to_user
+    non_emc
+    sends_push_notifications
+}
+
+query fetch_alarm_types($pagination: pagination_input!) {
+    alarm_types(pagination: $pagination) {
+        alarm_types {
+            ...core_alarm_type
+        }
+        success
+        message
+        pagination {
+            count
+            items
+            page
+        }
+    }
+}
+
+mutation create_alarm_type($params: alarm_type_params!) {
+  create_alarm_type(params: $params) {
+    alarm_type {
+      ...core_alarm_type
+    }
+    success
+    message
+  }
+}
+
+mutation update_alarm_type($id: Int!, $params: alarm_type_params!) {
+  update_alarm_type(id: $id, params: $params) {
+    alarm_type {
+      ...core_alarm_type
+    }
+    success
+    message
+  }
+}
+
+mutation delete_alarm_type($id: Int!) {
+   delete_alarm_type(id: $id) {
+       alarm_type_id
+       success
+       message
+   }
+}

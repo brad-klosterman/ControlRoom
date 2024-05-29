@@ -1,0 +1,32 @@
+query fetch_customers(
+  $search_params: customers_search_params
+  $pagination: pagination_input!
+) {
+  fetch_customers(search_params: $search_params, pagination: $pagination) {
+    customers {
+      id
+      seon_account_code
+      account_code
+      account_description
+      account_status
+      customer_name
+      customer_email
+      title
+      first_name
+      last_name
+      joined
+      properties {
+        id
+        address
+        property_name
+        property_code
+      }
+    }
+    success
+    pagination {
+      items
+      count
+      page
+    }
+  }
+}

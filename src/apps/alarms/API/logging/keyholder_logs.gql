@@ -1,0 +1,24 @@
+fragment alarm_keyholder_log on alarm_keyholder_log {
+  id
+  client_keyholder_id
+  keyholder_name
+  keyholder_phone
+  password_verified
+  reached
+  created_at
+}
+
+
+mutation log_keyholder_call(
+  $alarm_id: Int!
+  $keyholder_id: Int!
+  $keyholder_was_reached: Boolean!
+  $password_verified: Boolean!
+) {
+  log_keyholder_call(
+    alarm_id: $alarm_id
+    keyholder_id: $keyholder_id
+    keyholder_was_reached: $keyholder_was_reached
+    password_verified: $password_verified
+  )
+}

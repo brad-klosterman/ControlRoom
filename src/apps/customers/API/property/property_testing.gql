@@ -1,0 +1,23 @@
+mutation enable_property_testing(
+    $property_id: Int!
+    $keyholder_id: Int
+    $technician_id: Int
+    $testing_time: String!
+) {
+    enable_property_testing(
+        property_id: $property_id
+        keyholder_id:$keyholder_id
+        technician_id:$technician_id
+        testing_time: $testing_time
+    )
+}
+
+mutation disable_property_testing(
+    $property_id: Int!
+) {
+    disable_property_testing(
+        property_id: $property_id
+    )
+}
+
+

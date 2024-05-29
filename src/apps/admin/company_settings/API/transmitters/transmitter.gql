@@ -1,0 +1,16 @@
+fragment core_transmitter on transmitter {
+  id
+  number
+  set_name
+  description
+  status
+  area {
+    id
+    name
+  }
+  decoder {
+    id
+    name
+  }
+  heartbeat_interval
+}

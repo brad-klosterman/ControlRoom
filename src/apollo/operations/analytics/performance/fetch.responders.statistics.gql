@@ -1,0 +1,5 @@
+query FETCH_RESPONDERS_STATISTICS($params: fetch_responders_statistics_params!) {
+  responders_statistics(params: $params) {
+    ...core_responders_performance
+  }
+}

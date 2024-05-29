@@ -1,0 +1,57 @@
+fragment debit_order_attached_file on debit_order_attached_file {
+  type
+  created_at
+  url
+}
+
+fragment debit_order_export on debit_order_export {
+  id
+  month_of
+  collection_date
+  status
+  all_attached_files {
+    ...debit_order_attached_file
+  }
+}
+
+query fetch_debit_order_exports {
+  fetch_debit_order_exports {
+    ...debit_order_export
+  }
+}
+
+mutation debit_order_bulk_process(
+  $debit_order_format_type: String!
+  $collection_day: Int!
+  $collection_month: Int!
+) {
+  debit_order_bulk_process(
+    debit_order_format_type: $debit_order_format_type
+    collection_day: $collection_day
+    collection_month: $collection_month
+  ) {
+    message
+    success
+  }
+}
+
+mutation generate_debit_order_run(
+  $debit_order_format_type: String!
+  $collection_day: Int!
+  $collection_month: Int!
+) {
+  generate_debit_order_run(
+    debit_order_format_type: $debit_order_format_type
+    collection_day: $collection_day
+    collection_month: $collection_month
+  ) {
+    message
+    debit_order_export {
+      id
+      all_attached_files {
+        type
+        url
+      }
+    }
+  }
+}

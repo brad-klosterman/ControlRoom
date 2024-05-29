@@ -1,0 +1,11 @@
+mutation log_security_question(
+    $alarm_id: Int!
+    $alarm_source: alarm_source!
+    $answer: security_question_answer!
+) {
+    log_security_question(
+        alarm_id: $alarm_id
+        alarm_source: $alarm_source
+        answer: $answer
+    )
+}

@@ -1,0 +1,21 @@
+mutation generate_ssp_monthly_billing_report(
+  $billing_month: String!
+  $billing_year: String!
+) {
+  generate_ssp_monthly_billing_report(
+    billing_month: $billing_month
+    billing_year: $billing_year
+  )
+}
+
+mutation generate_ssp_billing_statements {
+  generate_ssp_billing_statements
+}
+
+mutation generate_revenue_report($year: String!) {
+  generate_revenue_report(year: $year) {
+    report {
+      download_link
+    }
+  }
+}

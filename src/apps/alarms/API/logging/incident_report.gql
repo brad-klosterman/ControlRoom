@@ -1,0 +1,20 @@
+fragment core_alarm_incident_report on alarm_incident_report {
+    id
+    alarm_id
+    home_alarm_id
+    description
+    false_alarm
+    all_in_order
+    damage
+    handed_over_to_police_or_ems
+    incident_report_images
+    property_accessed
+    vagrants_in_area
+    possible_intrusion
+    no_visible_intrusion
+    open_door
+    open_garage
+    open_window
+    created_at
+    updated_at
+}

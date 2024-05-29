@@ -1,0 +1,5 @@
+query FETCH_AGENTS_STATISTICS($params: fetch_agents_statistics_params!) {
+  agents_statistics(params: $params) {
+    ...core_agents_performance
+  }
+}

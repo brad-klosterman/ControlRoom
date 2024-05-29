@@ -1,0 +1,25 @@
+mutation pause_billing_subscription(
+    $customer_id: Int!
+    $subscription_id: Int!
+    $pause_date: String!
+    $resume_date: String!
+) {
+    pause_billing_subscription(
+        customer_id: $customer_id
+        subscription_id: $subscription_id
+        pause_date: $pause_date
+        resume_date: $resume_date
+    ) {
+        id
+    }
+}
+
+mutation group_customer_invoices(
+    $customer_id: Int!
+    $invoice_template_id: Int!
+) {
+    group_customer_invoices(
+        customer_id: $customer_id
+        invoice_template_id: $invoice_template_id
+    )
+}

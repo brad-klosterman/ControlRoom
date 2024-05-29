@@ -1,0 +1,25 @@
+mutation close_alarm(
+  $alarm_id: Int!
+  $alarm_source: alarm_source!
+  $close_reason: String!
+  $notes: String
+) {
+  close_alarm(
+    alarm_id: $alarm_id
+    close_reason: $close_reason
+    notes: $notes
+    alarm_source: $alarm_source
+  )
+}
+
+mutation close_alarms(
+  $alarm_stack: alarm_stack!
+  $alarm_type: String
+  $close_reason: String!
+) {
+  close_alarms(
+    alarm_stack: $alarm_stack
+    alarm_type: $alarm_type
+    close_reason: $close_reason
+  )
+}

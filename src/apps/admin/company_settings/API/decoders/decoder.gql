@@ -1,0 +1,4 @@
+fragment core_decoder on decoder {
+  id
+  name
+}

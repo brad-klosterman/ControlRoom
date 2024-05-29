@@ -1,0 +1,21 @@
+query FETCH_AGENTS {
+  agents {
+    agents {
+      ...core_agent
+    }
+    total
+    success
+  }
+}
+
+query FETCH_AREAS_STATUS {
+  fetch_areas_status {
+    success
+    areas {
+      id
+      description
+      assigned_agents_count
+      active_alarms_count
+    }
+  }
+}

@@ -1,0 +1,23 @@
+fragment core_alarm_log on alarm_log {
+  id
+  alarm_id
+  message
+  level
+  agent_name
+  panic_alarm_id
+  created_at
+  updated_at
+}
+
+
+query fetch_alarm_logs(
+  $alarm_id: Int!
+  $alarm_source: alarm_source!
+) {
+  alarm_logs(
+    alarm_id: $alarm_id
+    alarm_source: $alarm_source
+  ) {
+    ...core_alarm_log
+  }
+}

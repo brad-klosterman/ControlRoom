@@ -1,0 +1,57 @@
+query FETCH_ROLES {
+  roles {
+    roles {
+      id
+      company_id
+      created_at
+      discarded_at
+      name
+      permissions {
+        id
+        action
+        name
+        subject_class
+      }
+    }
+  }
+}
+
+mutation CREATE_ROLE($role: create_role_input!) {
+  create_role(role: $role) {
+    role {
+      id
+      company_id
+      created_at
+      discarded_at
+      name
+      permissions {
+        id
+        action
+        name
+        subject_class
+      }
+    }
+  }
+}
+
+mutation UPDATE_ROLE($updateRoleId: Int!, $params: update_role_input!) {
+  update_role(id: $updateRoleId, params: $params) {
+    role {
+      id
+      company_id
+      created_at
+      discarded_at
+      name
+      permissions {
+        id
+        action
+        name
+        subject_class
+      }
+    }
+  }
+}
+
+mutation DELETE_ROLE($deleteRoleId: Int!) {
+  delete_role(id: $deleteRoleId)
+}

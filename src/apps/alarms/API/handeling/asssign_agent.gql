@@ -1,0 +1,9 @@
+mutation acknowledge_alarm_instructions(
+  $alarm_id: Int!
+  $alarm_source: alarm_source!
+) {
+  acknowledge_alarm_instructions(
+    alarm_id: $alarm_id
+    alarm_source: $alarm_source
+  )
+}

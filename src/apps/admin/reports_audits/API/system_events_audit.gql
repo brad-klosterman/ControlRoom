@@ -1,0 +1,41 @@
+query fetch_system_events_audit(
+    $customer_id: Int
+    $search_params: system_events_audit_search_params
+    $pagination: pagination_input!
+) {
+    fetch_system_events_audit(
+        customer_id: $customer_id
+        params: $search_params
+        pagination: $pagination
+    ) {
+        system_change_events {
+            ...system_change_event
+        }
+        pagination {
+            count
+            items
+            page
+        }
+    }
+}
+
+query fetch_system_change_types {
+    fetch_system_change_types
+}
+
+fragment system_change_event on system_change_event {
+    log_id
+    event_type
+    changed_type
+    changed_date
+    changed_by_id
+    changes {
+        ...system_change_event_value
+    }
+}
+
+fragment system_change_event_value on system_change_event_value {
+    key
+    old_value
+    new_value
+}
