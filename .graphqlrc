@@ -1,0 +1,4 @@
+schema:
+  #- http://[::1]:4000/
+  - https://api.stage.seon-group.net
+  - src/apollo/subscriptions/schema.gql

@@ -1,0 +1,22 @@
+.DS_Store
+.idea/
+.vscode/
+.eslintcache
+.stylelintcache
+*terraform*
+*tf.planfile*
+*.log
+
+.env
+
+dist/
+
+coverage/
+node_modules/
+storybook-static/
+
+dump.rdb
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
